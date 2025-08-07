@@ -103,6 +103,12 @@ class ScreenViewController: SubscriberViewController<ScreenViewData>, NSWindowDe
         }
     }
 
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        sender.orderOut(nil)
+        NSApp.setActivationPolicy(.accessory)
+        return false
+    }
+
     func windowWillResize(_ window: NSWindow, to frameSize: NSSize) -> NSSize {
         let snappingOffset: CGFloat = 30
         let contentSize = window.contentRect(forFrameRect: NSRect(origin: .zero, size: frameSize)).size
